@@ -3,6 +3,11 @@
 
 # Function definition
 def binary_search(list, value, offset=0):
+  # Bonus
+  if list != sorted(list):
+    print("The list is not sorted")
+    return None
+
   # Base case
   if len(list) == 0:
     return None
@@ -13,7 +18,7 @@ def binary_search(list, value, offset=0):
     return middle + offset
   if midVal < value:
     # The right half
-    return binary_search(list[(middle+1):], value, offset + middle + 1)
+    return binary_search(list[(middle + 1):], value, offset + middle + 1)
 
   # The left half
   return binary_search(list[:middle], value, offset)
@@ -23,14 +28,12 @@ def binary_search(list, value, offset=0):
 nums = input("Enter a sorted list of integers separated by commas: ")
 search = int(input("Enter the value to search for in the list: "))
 
-
 # Computation
 nums = nums.split(",")
 for n in range(len(nums)):
   nums[n] = int(nums[n])
 # The parameter "offset" is optional with a default value, so I don't have to pass an argument for it.
 result = binary_search(nums, search)
-
 
 # Output
 if result is None:
